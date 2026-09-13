@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<!-- saved from url=(0061)file:///C:/Users/PC11/Downloads/amrs%20customs%20website.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AMRs Customs | Custom Decal Shop</title>
+  <link rel="stylesheet" href="./AMRs Customs _ Custom Decal Shop_files/all.min.css">
+  
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #0d0d0d;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .announcement-bar {
+      background: linear-gradient(90deg, #ff0055, #7a00ff);
+      color: #fff;
+      text-align: center;
+      padding: 8px 15px;
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+
+    header {
+      background-color: #141414;
+      border-bottom: 1px solid #222;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      color: #fff;
+    }
+
+    .logo span { color: #ff0055; }
+
+    .hero {
+      background: #111;
+      text-align: center;
+      padding: 60px 20px;
+      border-bottom: 1px solid #222;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: #fff;
+      text-transform: uppercase;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 25px;
+      border-left: 4px solid #ff0055;
+      padding-left: 12px;
+      text-transform: uppercase;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 25px;
+    }
+
+    .product-card {
+      background: #141414;
+      border: 1px solid #222;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      border-color: #ff0055;
+    }
+
+    .product-img {
+      width: 100%;
+      height: 200px;
+      background-color: #1a1a1a;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: #ff0055;
+      color: #fff;
+      font-size: 0.8rem;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-weight: bold;
+      z-index: 2;
+    }
+
+    .product-info { padding: 18px; }
+    .product-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 5px; }
+    .product-desc { font-size: 0.85rem; color: #888; margin-bottom: 15px; }
+    
+    .customize-btn {
+      width: 100%;
+      background: #ff0055;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    /* Modal Styling */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.92);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background: #141414;
+      border: 1px solid #333;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 920px;
+      max-height: 92vh;
+      overflow-y: auto;
+      padding: 25px;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    @media (max-width: 768px) {
+      .modal-content { grid-template-columns: 1fr; }
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 12px;
+      right: 18px;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #aaa;
+      z-index: 20;
+    }
+
+    .close-modal:hover { color: #ff0055; }
+
+    /* Gallery Carousel */
+    .gallery-container {
+      position: relative;
+      background: #090909;
+      border: 1px solid #222;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 380px;
+    }
+
+    .slide-wrapper {
+      width: 100%;
+      height: 340px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000000;
+      padding: 10px;
+    }
+
+    .slide-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+
+    .slider-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 12px 15px;
+      background: #0d0d0d;
+      border-top: 1px solid #222;
+    }
+
+    .slide-btn {
+      background: #222;
+      color: #fff;
+      border: 1px solid #444;
+      padding: 6px 14px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+
+    .slide-btn:hover {
+      background: #ff0055;
+      border-color: #ff0055;
+    }
+
+    .slide-caption {
+      font-size: 0.85rem;
+      color: #ff0055;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    /* Form Elements */
+    .form-group { margin-bottom: 12px; }
+    .form-group label { display: block; font-size: 0.8rem; color: #ccc; margin-bottom: 4px; }
+    .form-control {
+      width: 100%;
+      padding: 8px 10px;
+      background: #0d0d0d;
+      border: 1px solid #333;
+      border-radius: 6px;
+      color: #fff;
+      font-size: 0.85rem;
+    }
+    .form-control:focus { outline: none; border-color: #ff0055; }
+
+    .submit-order-btn {
+      width: 100%;
+      background: #ff0055;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+      text-transform: uppercase;
+    }
+
+    footer {
+      background: #090909;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.85rem;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="announcement-bar">
+    ⚡ 35 AED Custom Decals | Flat 20 AED Shipping Across UAE
+  </div>
+
+  <header>
+    <div class="nav-container">
+      <div class="logo">AMRs <span>CUSTOMS</span></div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>Custom Motocutz &amp; ODI Decals</h1>
+    <p>Select your decal style and choose between Holographic or Sparkle finish.</p>
+  </section>
+
+  <div class="container">
+    <h2 class="section-title">Select &amp; Order Decals</h2>
+    
+    <div class="product-grid">
+      <!-- ODI Plate Card -->
+      <div class="product-card" onclick="openCustomizer('ODI Plate Decal')">
+        <div class="product-img">
+          <span class="badge">ODI</span>
+          <img src="./AMRs Customs _ Custom Decal Shop_files/odi-plates.jpg" alt="ODI Plate Decal">
+        </div>
+        <div class="product-info">
+          <div class="product-title">ODI Plate Decal</div>
+          <div class="product-desc">Standard custom decal precision fit for ODI plates.</div>
+          <button class="customize-btn">View &amp; Order (35 AED)</button>
+        </div>
+      </div>
+
+      <!-- Motocutz Plate Card -->
+      <div class="product-card" onclick="openCustomizer('Motocutz Plate Decal')">
+        <div class="product-img">
+          <span class="badge">Motocutz</span>
+          <img src="./AMRs Customs _ Custom Decal Shop_files/motocutrz-lilgo.jpg" alt="Motocutz Plate Decal">
+        </div>
+        <div class="product-info">
+          <div class="product-title">Motocutz Plate Decal</div>
+          <div class="product-desc">Standard custom decal precision fit for Motocutz plates.</div>
+          <button class="customize-btn">View &amp; Order (35 AED)</button>
+        </div>
+      </div>
+
+      <!-- Cherry Blossom Sakura Card -->
+      <div class="product-card" onclick="openCustomizer('Cherry Blossom Sakura Decal')">
+        <div class="product-img">
+          <span class="badge">Sakura</span>
+          <img src="./AMRs Customs _ Custom Decal Shop_files/cherrry-plates.jpg" alt="Sakura Decal">
+        </div>
+        <div class="product-info">
+          <div class="product-title">Cherry Blossom Sakura Decal</div>
+          <div class="product-desc">Pink floral Sakura graphic overlay design.</div>
+          <button class="customize-btn">View &amp; Order (35 AED)</button>
+        </div>
+      </div>
+
+      <!-- Chrome Hearts Card -->
+      <div class="product-card" onclick="openCustomizer('Chrome Hearts Decal')">
+        <div class="product-img">
+          <span class="badge">Chrome</span>
+          <img src="./AMRs Customs _ Custom Decal Shop_files/earts-of-chrome.jpg" alt="Chrome Hearts Decal">
+        </div>
+        <div class="product-info">
+          <div class="product-title">Chrome Hearts Decal</div>
+          <div class="product-desc">Gothic chrome cross accents with silver highlight details.</div>
+          <button class="customize-btn">View &amp; Order (35 AED)</button>
+        </div>
+      </div>
+
+      <!-- Neegy Card -->
+      <div class="product-card" onclick="openCustomizer('Neegy Special Decal')">
+        <div class="product-img">
+          <span class="badge">Neegy</span>
+          <img src="./AMRs Customs _ Custom Decal Shop_files/neegy.jpg" alt="Neegy Decal">
+        </div>
+        <div class="product-info">
+          <div class="product-title">Neegy Edition Decal</div>
+          <div class="product-desc">Custom signature Neegy design decal plate.</div>
+          <button class="customize-btn">View &amp; Order (35 AED)</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Customizer with Reference Slide Gallery -->
+  <div class="modal-overlay" id="customModal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeCustomizer()">×</span>
+      
+      <!-- Interactive Image Gallery -->
+      <div class="gallery-container">
+        <div class="slide-wrapper">
+          <img id="currentSlideImg" src="file:///C:/Users/PC11/Downloads/amrs%20customs%20website.html" alt="Reference Image">
+        </div>
+        <div class="slider-controls">
+          <button class="slide-btn" onclick="prevSlide()"><i class="fas fa-chevron-left"></i> Prev</button>
+          <span class="slide-caption" id="slideCaption">Slide 1 of 2</span>
+          <button class="slide-btn" onclick="nextSlide()">Next <i class="fas fa-chevron-right"></i></button>
+        </div>
+      </div>
+
+      <!-- Order Controls -->
+      <div>
+        <h3 id="modalTitle" style="color: #fff; margin-bottom: 10px; font-weight: 900;">Customize Decal</h3>
+        
+        <form id="decalForm" onsubmit="handleOrder(event)">
+          
+          <div class="form-group">
+            <label>Plate Type:</label>
+            <select class="form-control" id="decalPlateType" required="">
+              <option value="Motocutz Plate">Motocutz Plate</option>
+              <option value="ODI Plate">ODI Plate</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Finish Option:</label>
+            <select class="form-control" id="decalFinish" required="">
+              <option value="Holographic Finish">Holographic Finish</option>
+              <option value="Sparkle / Glitter Finish">Sparkle / Glitter Finish</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Select Layout Style (See Slide 1):</label>
+            <select class="form-control" id="decalStyle" required="">
+              <option value="Style 1">Style 1</option>
+              <option value="Style 2">Style 2</option>
+              <option value="Style 3">Style 3</option>
+              <option value="Style 4">Style 4</option>
+              <option value="Style 5">Style 5</option>
+              <option value="Style 6">Style 6</option>
+              <option value="Style 7">Style 7</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Select Font Series (See Slide 2):</label>
+            <select class="form-control" id="decalFont" required="">
+              <option value="Series 1">Series 1</option>
+              <option value="Series 2">Series 2</option>
+              <option value="Series 3">Series 3</option>
+              <option value="Series 4">Series 4</option>
+              <option value="Series 5">Series 5</option>
+              <option value="Series 6 (Only includes Number 1)">Series 6 (Only includes Number 1)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Custom Number / Name / Logos:</label>
+            <input type="text" class="form-control" id="decalText" placeholder="e.g. Number 67 / Custom Name" required="">
+          </div>
+
+          <hr style="border-color: #222; margin: 15px 0;">
+
+          <!-- Customer Contact Info -->
+          <div class="form-group">
+            <label>Your Instagram / TikTok Handle:</label>
+            <input type="text" class="form-control" id="customerHandle" placeholder="@yourhandle" required="">
+          </div>
+
+          <div class="form-group">
+            <label>Phone / WhatsApp Number:</label>
+            <input type="tel" class="form-control" id="customerPhone" placeholder="+971 50 123 4567" required="">
+          </div>
+
+          <div class="form-group">
+            <label>Emirate:</label>
+            <select class="form-control" id="customerEmirate" required="">
+              <option value="">Select Emirate...</option>
+              <option value="Dubai">Dubai</option>
+              <option value="Abu Dhabi">Abu Dhabi</option>
+              <option value="Sharjah">Sharjah</option>
+              <option value="Ajman">Ajman</option>
+              <option value="Ras Al Khaimah">Ras Al Khaimah</option>
+              <option value="Fujairah">Fujairah</option>
+              <option value="Umm Al Quwain">Umm Al Quwain</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>City / Area:</label>
+            <input type="text" class="form-control" id="customerCity" placeholder="e.g. Al Qusais, Downtown" required="">
+          </div>
+
+          <button type="submit" class="submit-order-btn">Submit Order via DM (55 AED)</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 AMRs Customs. Custom Decals &amp; Sticker Drops.</p>
+  </footer>
+
+  <script>
+    let selectedItemName = "";
+
+    // Exact slide image references
+    const slides = [
+      {
+        title: "Slide 1: Style Layouts (Style 1 - 7)",
+        url: "https://i.postimg.cc/htsV87MH/nigera.jpg"
+      },
+      {
+        title: "Slide 2: Font Series Options (1 - 6)",
+        url: "https://i.postimg.cc/4dL8WSPX/ingb.jpg"
+      }
+    ];
+
+    let currentSlideIndex = 0;
+
+    function openCustomizer(itemName) {
+      selectedItemName = itemName;
+      document.getElementById('modalTitle').innerText = itemName;
+      document.getElementById('customModal').style.display = 'flex';
+      currentSlideIndex = 0;
+      updateSlideDisplay();
+    }
+
+    function closeCustomizer() {
+      document.getElementById('customModal').style.display = 'none';
+    }
+
+    function updateSlideDisplay() {
+      document.getElementById('currentSlideImg').src = slides[currentSlideIndex].url;
+      document.getElementById('slideCaption').innerText = `${slides[currentSlideIndex].title} (${currentSlideIndex + 1}/${slides.length})`;
+    }
+
+    function nextSlide() {
+      currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+      updateSlideDisplay();
+    }
+
+    function prevSlide() {
+      currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+      updateSlideDisplay();
+    }
+
+    function handleOrder(e) {
+      e.preventDefault();
+
+      const plateType = document.getElementById('decalPlateType').value;
+      const finish = document.getElementById('decalFinish').value;
+      const style = document.getElementById('decalStyle').value;
+      const fontSeries = document.getElementById('decalFont').value;
+      const customText = document.getElementById('decalText').value;
+      const handle = document.getElementById('customerHandle').value;
+      const phone = document.getElementById('customerPhone').value;
+      const emirate = document.getElementById('customerEmirate').value;
+      const city = document.getElementById('customerCity').value;
+
+      const summary = `Hi AMRs Customs! Here are my custom order details:
+
+Item: ${selectedItemName}
+Plate Type: ${plateType}
+Finish: ${finish}
+Layout Style: ${style}
+Font Selected: ${fontSeries}
+Custom Details: ${customText}
+
+Customer Details:
+Handle: ${handle}
+Phone: ${phone}
+Emirate: ${emirate}
+City: ${city}
+
+Total: 55 AED (Includes 20 AED UAE Delivery)`;
+
+      window.open('https://www.tiktok.com/amrs.customs', '_blank');
+      alert("Order formatted! DM @amrs.customs on Instagram or TikTok or Whatsapp with your details.");
+    }
+  </script>
+
+
+</body></html>
